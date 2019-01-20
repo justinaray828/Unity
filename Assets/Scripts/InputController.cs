@@ -32,7 +32,7 @@ public class InputController : MonoBehaviour
         float horizontalMovement = Input.GetAxis(Inputs.Horizontal.ToString());
         float verticalMovement = Input.GetAxis(Inputs.Vertical.ToString());
 
-        if ( horizontalMovement != 0 && verticalMovement != 0 )
+        if ( horizontalMovement != 0 || verticalMovement != 0 )
         {
             MoveGameObject(horizontalMovement, verticalMovement);
         }
@@ -41,7 +41,7 @@ public class InputController : MonoBehaviour
     private void MoveGameObject(float horizontalMovement, float verticalMovement)
     {
         Vector2 movementVector2D = new Vector2(horizontalMovement, verticalMovement);
-        rb2D.AddForce(movementVector2D);
+        rb2D.AddForce(movementVector2D * gameObjectSpeed);
     }
 
     private bool InputAxisIsToggled(string input)
